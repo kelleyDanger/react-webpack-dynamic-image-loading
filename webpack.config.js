@@ -17,7 +17,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.(png|jpg)$/, loader: 'file-loader?name=[name].[ext]' }
+      { test: /\.(png|jpg)$/, loader: 'file-loader' }
     ]
   },
   resolve: {

@@ -3,11 +3,21 @@ import path from 'path';
 
 import Decals from 'images/decals.js';
 
+
 class App extends React.Component {
+		constructor() {
+			super();
+			this.state = {
+				imgPack: 'Animals'
+			}
+		}
+
 
 
 	onChange(event) {
 		console.log(event.target.value);
+
+		this.setState({imgPack: event.target.value});
 
 	}
 
@@ -31,12 +41,12 @@ class App extends React.Component {
 	     <select onChange={this.onChange.bind(this)}>
 				  <option value="Animals" defaultValue>Animals</option>
 				  <option value="Emoticons">Emoticons</option>
-				  <option value="Halloween">Halloween</option>
+				  <option value="Minimen">Minimen</option>
 				  <option value="SacredGeometry">Sacred Geometry</option>
 				</select>
 
 				<img src={pathToImg} />
-				<DecalList imgPack={this.props.imgPack} />
+				<DecalList imgPack={this.state.imgPack} />
 			</div>
 		);
   }
@@ -48,9 +58,9 @@ class DecalList extends React.Component {
 		var decals = Decals[this.props.imgPack];
 		console.log(decals);
 
-		const decalList = decals.map((decal) =>
-			<img src={decal} />
-		);
+		const decalList = decals.map((decal, i) =>
+			<img src={`./client/public/assets/images/${this.props.imgPack}/${decal}`} key={i} />
+		)
 		return(
 			<div>{decalList}</div>
 		)
